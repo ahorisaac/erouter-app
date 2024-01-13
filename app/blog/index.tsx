@@ -1,0 +1,55 @@
+import { Link, useRouter } from "expo-router";
+import { Button, StyleSheet, Text, View } from "react-native";
+
+const Blog = () => {
+  const router = useRouter();
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.main}>
+        <Text style={styles.title}>Blog Page</Text>
+        <Text style={styles.subtitle}>This is the blog page of your app.</Text>
+        <Button title="Go to Blog 1" onPress={() => router.push("/blog/1")} />
+        <Button title="Go to Blog 2" onPress={() => router.push("/blog/2")} />
+        <Button
+          title="Go to Blog 3"
+          onPress={() => router.push("/blog/3?author=Soovy")}
+        />
+
+        <Link
+          href={{
+            pathname: "blog/4",
+            params: { author: "Viter" },
+          }}
+        >
+          <Text>Go to Blog 4</Text>
+        </Link>
+        <Button onPress={() => router.back()} title="Go Back" />
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    padding: 24,
+  },
+  main: {
+    flex: 1,
+    justifyContent: "center",
+    maxWidth: 960,
+    marginHorizontal: "auto",
+  },
+  title: {
+    fontSize: 64,
+    fontWeight: "bold",
+  },
+  subtitle: {
+    fontSize: 36,
+    color: "#38434D",
+  },
+});
+
+export default Blog;
